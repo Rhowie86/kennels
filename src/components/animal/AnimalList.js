@@ -37,12 +37,10 @@ export const AnimalList = () => {
                 <div className="animals">
                 {
         animals.map(animal => {
-            const owner = customers.find(c => c.id ===animal.customerId)
-            const clinic = locations.find(l => l.id === animal.locationId)
+          
           return <AnimalCard key={animal.id} 
                     animal={animal}
-                    customer={owner}
-                    location={clinic}
+                    
                      />
         })
       }

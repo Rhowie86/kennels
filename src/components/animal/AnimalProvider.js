@@ -7,6 +7,11 @@ export const AnimalContext = createContext()
 export const AnimalProvider = (props) => {
     const [animals, setAnimals] = useState([])
 
+    const getAnimalById = (id) => {
+        return fetch(`http://localhost:8088/animals/${id}?_expand=location&_expand=customer`)
+            .then(res => res.json())
+    }
+
     const getAnimals = () => {
         return fetch("http://localhost:8088/animals")
         .then(res => res.json())
@@ -22,6 +27,8 @@ export const AnimalProvider = (props) => {
             body: JSON.stringify(animalObj)
         })
         .then(getAnimals)
+    
+     
     }
 
     /*
@@ -30,11 +37,11 @@ export const AnimalProvider = (props) => {
         and the `addAnimal` function as keys. This
         allows any child elements to access them.
     */
-    return (
-        <AnimalContext.Provider value={{
-            animals, getAnimals, addAnimal
-        }}>
-            {props.children}
-        </AnimalContext.Provider>
-    )
+   return (
+    <AnimalContext.Provider value={{
+    animals, addAnimal, getAnimals, getAnimalById
+    }}>
+        {props.children}
+    </AnimalContext.Provider>
+   )
 }

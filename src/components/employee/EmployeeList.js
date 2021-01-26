@@ -34,8 +34,8 @@ export const EmployeeList = () => {
       {console.log("EmployeeList: Render", employees)}
       {
         employees.map(employee => {
-          const location = locations.find(l => l.id === employee.locationId)
-          return <EmployeeCard key={employee.id} employee={employee} location= {location} />
+         
+          return <EmployeeCard key={employee.id} employee={employee}  />
         })
       }
     </div>
