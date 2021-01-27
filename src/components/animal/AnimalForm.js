@@ -3,10 +3,10 @@ import { LocationContext } from "../location/LocationProvider"
 import { AnimalContext } from "../animal/AnimalProvider"
 import { CustomerContext } from "../customer/CustomerProvider"
 import "./Animal.css"
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 export const AnimalForm = () => {
-    const { addAnimal } = useContext(AnimalContext)
+    const { addAnimal, getAnimalById, updateAnimal } = useContext(AnimalContext)
     const { locations, getLocations } = useContext(LocationContext)
     const { customers, getCustomers } = useContext(CustomerContext)
 
@@ -15,17 +15,23 @@ export const AnimalForm = () => {
 
     Define the intial state of the form inputs with useState()
     */
-
+ //for edit, hold on to state of animal in this view
     const [animal, setAnimal] = useState({
         name:"",
         breed:"",
         locationId: 0,
         customerId: 0
     });
-
+ //wait for data before button is active
+    const [isLoading, setIsLoading] = useState(true)
     
+    const {animalId} = useParams();
     const history = useHistory();
     
+        //when field changes, update state. This causes a re-render and updates the view.
+    //Controlled component
+
+
     /*
    Reach out to the world and get customers state
    and locations state on initialization.
