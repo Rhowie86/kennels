@@ -1,8 +1,10 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import "./NavBar.css"
 
 export const NavBar = (props) => {
+    const history = useHistory()
     return (
         <ul className="navbar">
             <li className="navbar__item active">
@@ -20,6 +22,12 @@ export const NavBar = (props) => {
             <li className="navbar__item">
                 <Link className="navbar__link" to="/employees">Employees</Link>
             </li>
+            <div>
+            <button onClick={() => {localStorage.removeItem("kennel_customer")}}
+                    onClick={() => {history.push("/login")}}>
+                Log out
+            </button>
+            </div>
         </ul>
     )
 }

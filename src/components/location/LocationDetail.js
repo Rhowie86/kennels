@@ -49,7 +49,10 @@ export const LocationDetail = () => {
                 </ul> 
               
             </div>
-            <button onClick={() => {history.pushState("/locations")}}>
+            <button onClick={() => {history.push(`/locations/edit/${location.id}`)}}>
+                Edit
+            </button>
+            <button onClick={() => {history.push("/locations")}}>
                 Back
             </button>
         </section>

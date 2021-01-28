@@ -38,6 +38,9 @@ const handleRelease = () => {
       <button onClick={() => {
     history.push(`/animals/edit/${animal.id}`)
 }}>Edit</button>
+<button onClick={() => {history.push("/animals")}}>
+                Back
+            </button>
     </section>
   )
 }

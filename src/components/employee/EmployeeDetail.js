@@ -3,11 +3,13 @@ import { EmployeeContext } from "./EmployeeProvider"
 import "./employee.css"
 import { useParams, useHistory } from "react-router-dom"
 
+
 export const EmployeeDetail = () => {
     const { getEmployeeById } = useContext(EmployeeContext)
+    const history = useHistory()
 
     const  [ employee, setEmployee ] = useState({})
-
+    
     const {employeeId} = useParams()
     
     useEffect(() => {
@@ -23,6 +25,9 @@ export const EmployeeDetail = () => {
             <h3 className="employee__name">{employee.name}</h3>
             
             <div className="employee__location">{employee.location?.name}</div>
+            <button onClick={() => {history.push("/employees")}}>
+                Back
+            </button>
         </section>
     
     )
